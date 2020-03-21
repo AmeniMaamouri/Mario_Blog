@@ -35,7 +35,6 @@ const ProjectDetails = ({project}) => {
 const mapStateToProps = (state, ownProps) => {
    
     let id = ownProps.match.params.id;
-
     const projects = state.firestore.data.projects;
     const project = projects ? projects[id] : null;
 
