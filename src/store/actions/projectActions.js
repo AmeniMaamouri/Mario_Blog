@@ -3,7 +3,7 @@
  
 export const createProject = (project) => {
 
-    return (dispatch, getState, {getFirebase, getFiresotre}) => {
+    return (dispatch, getState) => {
 
       
         firebase.firestore().collection('projects').add({
