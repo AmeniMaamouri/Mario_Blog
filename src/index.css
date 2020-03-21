@@ -5,9 +5,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url(/img/mario-bg.png) no-repeat;
+  background-size: 100%;
+  background-position: bottom;
+  background-color: #95e8f3;
+  min-height: 100%;
+}
+html {
+  min-height: 100%;
+}
+form {
+  padding: 20px;
+  margin-top: 60px;
+}
+form button, form h5{
+  margin: 20px 0 ;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.titleInterface {
+  font-size: 3rem;
+  padding-bottom: 20px;
 }
