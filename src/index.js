@@ -36,6 +36,8 @@ const store = createStore(rootReducer,
             thunk.withExtraArgument({ getFirebase, getFirestore })
         ),
         reduxFirestore(firebase, firebaseConfig),
+       
+        
     )
 );
 
@@ -50,9 +52,12 @@ const rrfProps = {
 
 
 
-ReactDOM.render(<Provider store={store}>
-  <ReactReduxFirebaseProvider {...rrfProps}>  
-  <App />
-  </ReactReduxFirebaseProvider>
- </Provider>, document.getElementById('root'));
+    ReactDOM.render(<Provider store={store}>
+        <ReactReduxFirebaseProvider {...rrfProps}>  
+        <App />
+        </ReactReduxFirebaseProvider>
+       </Provider>, document.getElementById('root'));
+
+
+
 

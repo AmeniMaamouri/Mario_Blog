@@ -1,12 +1,13 @@
 
- import firebase from 'firebase/app'
+
  
 export const createProject = (project) => {
 
-    return (dispatch, getState) => {
+    return (dispatch, getState, {getFirestore}) => {
 
-      
-        firebase.firestore().collection('projects').add({
+        const firestore = getFirestore();
+
+        firestore.collection('projects').add({
             ...project,
             authorFirstName:'net',
             authorLastName:'ninja',
