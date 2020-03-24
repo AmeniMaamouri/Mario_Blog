@@ -11,7 +11,7 @@ import thunk from 'redux-thunk'
  import 'firebase/firestore'
  import 'firebase/auth'
  import { createFirestoreInstance } from 'redux-firestore';
-import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
+import { ReactReduxFirebaseProvider, getFirebase, reactReduxFirebase } from 'react-redux-firebase';
 
 const firebaseConfig  = {
     apiKey: "AIzaSyCUnihvINnb3T0zzuctUKlqVnLQKbcwMu8",
@@ -23,6 +23,7 @@ const firebaseConfig  = {
     appId: "1:540030953526:web:e51b5727c496e4728f9097"
     };
 
+    const config = { useFirestoreForProfile: true, userProfile: 'users' };
 
     if (!firebase.apps.length) {
         firebase.initializeApp(firebaseConfig);
@@ -41,7 +42,7 @@ const store = createStore(rootReducer,
     )
 );
 
-const config = { useFirestoreForProfile: true, userProfile: 'users', attachAuthIsReady: true };
+
 
 const rrfProps = {
     firebase,
@@ -53,7 +54,7 @@ const rrfProps = {
 
 
     ReactDOM.render(<Provider store={store}>
-        <ReactReduxFirebaseProvider {...rrfProps}>  
+        <ReactReduxFirebaseProvider  {...rrfProps}>
         <App />
         </ReactReduxFirebaseProvider>
        </Provider>, document.getElementById('root'));

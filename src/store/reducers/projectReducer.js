@@ -1,12 +1,6 @@
 
 const initState = {
-    projects: [
-        { id: 1, title: 'Ameni Works', content: 'BLAAH BLAAH ' },
-        { id: 2, title: 'You can do it', content: 'BLAAH BLAAH ' },
-        { id: 3, title: 'Well done', content: 'BLAAH BLAAH ' },
-        { id: 4, title: 'Ameni YUEEESSS Works', content: 'BLAAH BLAAH ' },
-
-    ]
+  
 
 }
 
