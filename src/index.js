@@ -11,7 +11,7 @@ import thunk from 'redux-thunk'
  import 'firebase/firestore'
  import 'firebase/auth'
  import { createFirestoreInstance } from 'redux-firestore';
-import { ReactReduxFirebaseProvider, getFirebase, reactReduxFirebase } from 'react-redux-firebase';
+import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
 
 const firebaseConfig  = {
     apiKey: "AIzaSyCUnihvINnb3T0zzuctUKlqVnLQKbcwMu8",
@@ -25,19 +25,19 @@ const firebaseConfig  = {
 
     const config = { useFirestoreForProfile: true, userProfile: 'users' };
 
-    if (!firebase.apps.length) {
         firebase.initializeApp(firebaseConfig);
-      }
+     
 
     firebase.firestore();
-
+   
 const store = createStore(rootReducer,
     compose(
         applyMiddleware(
             thunk.withExtraArgument({ getFirebase, getFirestore })
         ),
         reduxFirestore(firebase, firebaseConfig),
-       
+        
+    
         
     )
 );

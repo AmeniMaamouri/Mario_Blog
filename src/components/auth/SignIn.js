@@ -17,10 +17,6 @@ class SignIn extends Component {
        this.props.SignIn(this.state)
      
 
-        // if (this.props.userLogin.auth.uid){
-        //     console.log('WELCOME')
-        // }
-
     }
 
     handleChange = (e) =>{
@@ -73,6 +69,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
+ 
     
     return {
         authError : state.auth.authError,

@@ -43,6 +43,7 @@ export const createUser = (user) => {
             return firestore.collection('users').doc(res.user.uid).set({
                 firstName: user.firstName,
                 lastName: user.lastName,
+                initials: user.firstName.charAt(0).toUpperCase() + user.lastName.charAt(0).toUpperCase()
    
             })
          

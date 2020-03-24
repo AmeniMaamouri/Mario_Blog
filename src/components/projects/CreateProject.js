@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import {createProject} from '../../store/actions/projectActions'
 import {Redirect} from 'react-router-dom'
+import {compose} from 'redux'
+import { firestoreConnect } from 'react-redux-firebase';
 
 
 class CreateProject extends Component {
@@ -17,6 +19,10 @@ class CreateProject extends Component {
     
         this.props.createProject(this.state)
 
+        if(!this.props.projectErr){
+            this.props.history.push('/')
+        }
+
     }
 
     handleChange = (e) =>{
@@ -28,13 +34,12 @@ class CreateProject extends Component {
 
     }
 
-    render() {
-        
+    render() {  
         const {auth} = this.props
-        return (
-            <div>
+        var html
 
-            {auth.isLoaded ? !auth.isEmpty ? <div className="container">
+        if (auth.isLoaded && !auth.isEmpty){
+          html =  <div className="container">
             <form className="white" onSubmit={this.handleSubmit}>
                 <h1 className="grey-text text-darken-3 titleInterface">Create Project</h1>
                     <div className="input-field">
@@ -54,7 +59,14 @@ class CreateProject extends Component {
             </form>
 
             
-        </div> : <Redirect to="/signin" /> : null} 
+        </div>
+        }else {
+            html = <Redirect to="/signin" /> 
+        }
+
+        return (
+            <div>
+                {html}
         </div>
             
         );
@@ -68,10 +80,15 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
+    
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        projectErr: state.project.projectErr
     }
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateProject);
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    firestoreConnect(() => ['projects'])
+)(CreateProject);
