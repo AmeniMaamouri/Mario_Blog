@@ -41,15 +41,15 @@ class CreateProject extends Component {
         if (auth.isLoaded && !auth.isEmpty){
           html =  <div className="container">
             <form className="white" onSubmit={this.handleSubmit}>
-                <h1 className="grey-text text-darken-3 titleInterface">Create Project</h1>
+                <h1 className="grey-text text-darken-3 titleInterface">Create Article</h1>
                     <div className="input-field">
                         
-                        <label htmlFor="title">Project Title</label>
+                        <label htmlFor="title">Article Title</label>
                         <input type="text" id="title" onChange={this.handleChange}/>
                     </div>
 
                     <div className="input-field">
-                        <label htmlFor="content">Project Content</label>
+                        <label htmlFor="content">Article Content</label>
                        <textarea className="materialize-textarea" id="content" onChange={this.handleChange}></textarea>
                     </div>
 
