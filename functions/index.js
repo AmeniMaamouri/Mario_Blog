@@ -27,3 +27,16 @@ exports.projectCreated = functions.firestore.document('projects/{projectId}').on
 
 })
 
+exports.newUser = functions.firestore.document('users/{userId}').onCreate(doc => {
+
+    const newUser = doc.data();
+    const notification = {
+        content: 'Joined the party',
+                 user: `${newUser.firstName} ${newUser.lastName}`,
+                 time: admin.firestore.FieldValue.serverTimestamp()
+    }
+
+    return createNotification(notification)
+
+})
+
